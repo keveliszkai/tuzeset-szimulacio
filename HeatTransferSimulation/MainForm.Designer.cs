@@ -53,6 +53,8 @@
             this.numericUpDownSimulationLength = new System.Windows.Forms.NumericUpDown();
             this.label6 = new System.Windows.Forms.Label();
             this.numericUpDownMultiplier = new System.Windows.Forms.NumericUpDown();
+            this.textBoxLogs = new System.Windows.Forms.TextBox();
+            this.Logs = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -66,6 +68,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownParallelVertical)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSimulationLength)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMultiplier)).BeginInit();
+            this.Logs.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox
@@ -311,7 +314,7 @@
             // 
             this.numericUpDownSimulationLength.Location = new System.Drawing.Point(157, 45);
             this.numericUpDownSimulationLength.Maximum = new decimal(new int[] {
-            120,
+            3600,
             0,
             0,
             0});
@@ -355,11 +358,32 @@
             0,
             0});
             // 
+            // textBoxLogs
+            // 
+            this.textBoxLogs.Enabled = false;
+            this.textBoxLogs.Location = new System.Drawing.Point(6, 19);
+            this.textBoxLogs.Multiline = true;
+            this.textBoxLogs.Name = "textBoxLogs";
+            this.textBoxLogs.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBoxLogs.Size = new System.Drawing.Size(968, 170);
+            this.textBoxLogs.TabIndex = 12;
+            // 
+            // Logs
+            // 
+            this.Logs.Controls.Add(this.textBoxLogs);
+            this.Logs.Location = new System.Drawing.Point(13, 479);
+            this.Logs.Name = "Logs";
+            this.Logs.Size = new System.Drawing.Size(984, 195);
+            this.Logs.TabIndex = 13;
+            this.Logs.TabStop = false;
+            this.Logs.Text = "Logs";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1009, 486);
+            this.ClientSize = new System.Drawing.Size(1009, 686);
+            this.Controls.Add(this.Logs);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.groupBox2);
@@ -367,10 +391,11 @@
             this.Controls.Add(this.pictureBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximumSize = new System.Drawing.Size(1025, 525);
-            this.MinimumSize = new System.Drawing.Size(1025, 525);
+            this.MaximumSize = new System.Drawing.Size(1025, 725);
+            this.MinimumSize = new System.Drawing.Size(1025, 725);
             this.Name = "MainForm";
             this.Text = "Heat Transfer Simulation";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.groupBox1.ResumeLayout(false);
@@ -387,6 +412,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownParallelVertical)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSimulationLength)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMultiplier)).EndInit();
+            this.Logs.ResumeLayout(false);
+            this.Logs.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -417,6 +444,8 @@
         private System.Windows.Forms.NumericUpDown numericUpDownHumans;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.NumericUpDown numericUpDownMultiplier;
+        private System.Windows.Forms.TextBox textBoxLogs;
+        private System.Windows.Forms.GroupBox Logs;
     }
 }
 

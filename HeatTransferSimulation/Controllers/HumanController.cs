@@ -17,6 +17,8 @@ namespace HeatTransferSimulation.Controllers
         private Stopwatch CalculationStopper = new Stopwatch();
         public long CalculationTime = 0;
 
+        private int RandomCounter = 0;
+
         public void Boot(List<Wall> walls, List<Door> doors, int numberOfHumans) {
             ViewGraphic vg = new ViewGraphic();
             vg.ImagePath = Environment.CurrentDirectory + @"\..\..\Human.png";
@@ -28,6 +30,7 @@ namespace HeatTransferSimulation.Controllers
 
                 do
                 {
+                    One.Name = string.Format("Human - {0}", i);
                     One.Position = new PointF(rnd.Next(0, 750), rnd.Next(0, 450));
                     One.Angle = rnd.Next(-180, 180);
                     One.NextPosition = One.Position;
@@ -63,10 +66,19 @@ namespace HeatTransferSimulation.Controllers
 
         public void RandomEvent()
         {
-            Human human = Humans[rnd.Next(0, Humans.Count - 1)];
+            if (RandomCounter == 0)
+            {
+                RandomCounter = rnd.Next(0, 30);
 
-            if(!human.Emergency)
-                human.SetTarget(new PointF(human.Position.X + rnd.Next(-100, 100), human.Position.Y + rnd.Next(-100, 100)));
+                Human human = Humans[rnd.Next(0, Humans.Count - 1)];
+
+                if (!human.Emergency)
+                    human.SetTarget(new PointF(human.Position.X + rnd.Next(-100, 100), human.Position.Y + rnd.Next(-100, 100)));
+            }
+            else
+            {
+                RandomCounter--;
+            }
         }
     }
 }

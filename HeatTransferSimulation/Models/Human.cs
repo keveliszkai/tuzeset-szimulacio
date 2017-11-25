@@ -10,6 +10,10 @@ namespace HeatTransferSimulation.Models
 {
     class Human
     {
+        public string Name { get; set; }
+
+        public List<string> Logs = new List<string>();
+
         public PointF Position { get; set; }
         public PointF NextPosition { get; set; }
         public PointF Target { get; set; }
@@ -19,6 +23,7 @@ namespace HeatTransferSimulation.Models
         public float Temperature { get; set; }
 
         public bool Emergency = false;
+        public bool Escaped = false;
 
         public float CollisionDistance { get; set; } = 20;
 
@@ -51,7 +56,6 @@ namespace HeatTransferSimulation.Models
         {
             if (Vector.GetDistanceBetweenPoints(Target, Position) > 2)
             {
-                //Moving = Vector.Subtract(Target, Position);
                 NextPosition = Vector.Add(Position, Vector.Multiply(Moving, Speed));
                 Angle = Vector.GetAngle(Moving);
 
@@ -81,7 +85,14 @@ namespace HeatTransferSimulation.Models
                 {
                     EmergencyTarget = EmergencyTarget.NextPoint;
                     SetTarget(EmergencyTarget.Position);
+                }
 
+                if(Vector.GetDistanceBetweenPoints(Target, Position) < 2 
+                    && !Escaped
+                    && EmergencyTarget.NextPoint == null)
+                {
+                    Escaped = true;
+                    Logs.Add(string.Format("Escaped"));
                 }
             }
             else
@@ -107,6 +118,7 @@ namespace HeatTransferSimulation.Models
 
         public void PathFind()
         {
+            Logs.Add(string.Format("Started Emergency"));
             Emergency = true;
 
             if (Room != null && Vector.GetDistanceBetweenPoints(Room.Doors.FirstOrDefault().Center, Position) > CollisionDistance)
