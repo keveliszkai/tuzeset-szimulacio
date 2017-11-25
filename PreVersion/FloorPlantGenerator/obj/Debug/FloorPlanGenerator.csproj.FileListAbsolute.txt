@@ -1,0 +1,9 @@
+C:\Users\liszk\Documents\Visual Studio 2017\Projects\HumanWithMoving\FloorPlantGenerator\bin\Debug\FloorPlantGenerator.exe.config
+C:\Users\liszk\Documents\Visual Studio 2017\Projects\HumanWithMoving\FloorPlantGenerator\bin\Debug\FloorPlantGenerator.exe
+C:\Users\liszk\Documents\Visual Studio 2017\Projects\HumanWithMoving\FloorPlantGenerator\bin\Debug\FloorPlantGenerator.pdb
+C:\Users\liszk\Documents\Visual Studio 2017\Projects\HumanWithMoving\FloorPlantGenerator\obj\Debug\FloorPlanGenerator.csprojResolveAssemblyReference.cache
+C:\Users\liszk\Documents\Visual Studio 2017\Projects\HumanWithMoving\FloorPlantGenerator\obj\Debug\FloorPlantGenerator.Form1.resources
+C:\Users\liszk\Documents\Visual Studio 2017\Projects\HumanWithMoving\FloorPlantGenerator\obj\Debug\FloorPlantGenerator.Properties.Resources.resources
+C:\Users\liszk\Documents\Visual Studio 2017\Projects\HumanWithMoving\FloorPlantGenerator\obj\Debug\FloorPlanGenerator.csproj.GenerateResource.Cache
+C:\Users\liszk\Documents\Visual Studio 2017\Projects\HumanWithMoving\FloorPlantGenerator\obj\Debug\FloorPlantGenerator.exe
+C:\Users\liszk\Documents\Visual Studio 2017\Projects\HumanWithMoving\FloorPlantGenerator\obj\Debug\FloorPlantGenerator.pdb

@@ -1,0 +1,9 @@
+C:\Users\liszk\Documents\Visual Studio 2017\Projects\HumanWithMoving\HeatTrasnfer\bin\Debug\HeatTrasnfer.exe.config
+C:\Users\liszk\Documents\Visual Studio 2017\Projects\HumanWithMoving\HeatTrasnfer\bin\Debug\HeatTrasnfer.exe
+C:\Users\liszk\Documents\Visual Studio 2017\Projects\HumanWithMoving\HeatTrasnfer\bin\Debug\HeatTrasnfer.pdb
+C:\Users\liszk\Documents\Visual Studio 2017\Projects\HumanWithMoving\HeatTrasnfer\obj\Debug\HeatTrasnfer.csprojResolveAssemblyReference.cache
+C:\Users\liszk\Documents\Visual Studio 2017\Projects\HumanWithMoving\HeatTrasnfer\obj\Debug\HeatTrasnfer.Form1.resources
+C:\Users\liszk\Documents\Visual Studio 2017\Projects\HumanWithMoving\HeatTrasnfer\obj\Debug\HeatTrasnfer.Properties.Resources.resources
+C:\Users\liszk\Documents\Visual Studio 2017\Projects\HumanWithMoving\HeatTrasnfer\obj\Debug\HeatTrasnfer.csproj.GenerateResource.Cache
+C:\Users\liszk\Documents\Visual Studio 2017\Projects\HumanWithMoving\HeatTrasnfer\obj\Debug\HeatTrasnfer.exe
+C:\Users\liszk\Documents\Visual Studio 2017\Projects\HumanWithMoving\HeatTrasnfer\obj\Debug\HeatTrasnfer.pdb

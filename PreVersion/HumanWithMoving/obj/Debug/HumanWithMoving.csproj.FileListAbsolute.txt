@@ -1,0 +1,9 @@
+c:\Users\liszk\Documents\Visual Studio 2017\Projects\HumanWithMoving\HumanWithMoving\bin\Debug\HumanWithMoving.exe.config
+c:\Users\liszk\Documents\Visual Studio 2017\Projects\HumanWithMoving\HumanWithMoving\bin\Debug\HumanWithMoving.exe
+c:\Users\liszk\Documents\Visual Studio 2017\Projects\HumanWithMoving\HumanWithMoving\bin\Debug\HumanWithMoving.pdb
+c:\Users\liszk\Documents\Visual Studio 2017\Projects\HumanWithMoving\HumanWithMoving\obj\Debug\HumanWithMoving.csprojResolveAssemblyReference.cache
+c:\Users\liszk\Documents\Visual Studio 2017\Projects\HumanWithMoving\HumanWithMoving\obj\Debug\HumanWithMoving.Form1.resources
+c:\Users\liszk\Documents\Visual Studio 2017\Projects\HumanWithMoving\HumanWithMoving\obj\Debug\HumanWithMoving.Properties.Resources.resources
+c:\Users\liszk\Documents\Visual Studio 2017\Projects\HumanWithMoving\HumanWithMoving\obj\Debug\HumanWithMoving.csproj.GenerateResource.Cache
+c:\Users\liszk\Documents\Visual Studio 2017\Projects\HumanWithMoving\HumanWithMoving\obj\Debug\HumanWithMoving.exe
+c:\Users\liszk\Documents\Visual Studio 2017\Projects\HumanWithMoving\HumanWithMoving\obj\Debug\HumanWithMoving.pdb

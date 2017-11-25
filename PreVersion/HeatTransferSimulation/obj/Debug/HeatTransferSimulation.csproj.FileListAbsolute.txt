@@ -1,0 +1,9 @@
+C:\Users\liszk\Documents\Visual Studio 2017\Projects\HumanWithMoving\HeatTransferSimulation\bin\Debug\HeatTransferSimulation.exe.config
+C:\Users\liszk\Documents\Visual Studio 2017\Projects\HumanWithMoving\HeatTransferSimulation\bin\Debug\HeatTransferSimulation.exe
+C:\Users\liszk\Documents\Visual Studio 2017\Projects\HumanWithMoving\HeatTransferSimulation\bin\Debug\HeatTransferSimulation.pdb
+C:\Users\liszk\Documents\Visual Studio 2017\Projects\HumanWithMoving\HeatTransferSimulation\obj\Debug\HeatTransferSimulation.MainForm.resources
+C:\Users\liszk\Documents\Visual Studio 2017\Projects\HumanWithMoving\HeatTransferSimulation\obj\Debug\HeatTransferSimulation.Properties.Resources.resources
+C:\Users\liszk\Documents\Visual Studio 2017\Projects\HumanWithMoving\HeatTransferSimulation\obj\Debug\HeatTransferSimulation.csproj.GenerateResource.Cache
+C:\Users\liszk\Documents\Visual Studio 2017\Projects\HumanWithMoving\HeatTransferSimulation\obj\Debug\HeatTransferSimulation.exe
+C:\Users\liszk\Documents\Visual Studio 2017\Projects\HumanWithMoving\HeatTransferSimulation\obj\Debug\HeatTransferSimulation.pdb
+C:\Users\liszk\Documents\Visual Studio 2017\Projects\HumanWithMoving\HeatTransferSimulation\obj\Debug\HeatTransferSimulation.csprojResolveAssemblyReference.cache
