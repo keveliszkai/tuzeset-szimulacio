@@ -1,6 +1,7 @@
 ﻿using HeatTransferSimulation.Models;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,9 @@ namespace HeatTransferSimulation.Controllers
     {
         private Random rnd = new Random();
         public List<Human> Humans { get; set; } = new List<Human>();
+
+        private Stopwatch CalculationStopper = new Stopwatch();
+        public long CalculationTime = 0;
 
         public void Boot(List<Wall> walls, List<Door> doors, int numberOfHumans) {
             ViewGraphic vg = new ViewGraphic();
@@ -43,13 +47,18 @@ namespace HeatTransferSimulation.Controllers
 
         public void Calculate(List<Wall> walls, List<Door> doors, List<Room> rooms)
         {
+            CalculationStopper.Restart();
+
             Humans.ForEach(human => human.Calculate(walls, doors));
-            Humans.ForEach(human => 
+            Humans.ForEach(human =>
             human.Room = rooms
             .Where(room => !room.isMainRoom)
             .Where(room => room.InRoom(human.Position))
             .FirstOrDefault()
             );
+
+            CalculationStopper.Stop();
+            CalculationTime = CalculationStopper.ElapsedTicks;
         }
 
         public void RandomEvent()

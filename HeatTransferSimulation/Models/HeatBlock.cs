@@ -22,10 +22,6 @@ namespace HeatTransferSimulation.Models
 
         public void Draw(Graphics g)
         {
-            // uncomment for higher quality output
-            g.InterpolationMode = InterpolationMode.High;
-            g.CompositingQuality = CompositingQuality.HighQuality;
-            g.SmoothingMode = SmoothingMode.AntiAlias;
 
             Center = new PointF(Position.X + Size.X / 2, Position.Y + Size.Y / 2);
 
