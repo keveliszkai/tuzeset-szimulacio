@@ -48,6 +48,9 @@ namespace HeatTransferSimulation
 
             comboBoxMultipliers.SelectedIndex = 1;
 
+            MessageBox.Show("Welcome! After starting the simulation, you can click on the screen, and the heat will come.", 
+                "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             CreateLogInvoke("Program started.");
         }
 
