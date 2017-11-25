@@ -37,42 +37,41 @@
             this.buttonSimulateWithThreadPool = new System.Windows.Forms.Button();
             this.buttonManualEmergency = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.groupBoxActions = new System.Windows.Forms.GroupBox();
+            this.tabControl = new System.Windows.Forms.TabControl();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.buttonWithoutAny = new System.Windows.Forms.Button();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.numericUpDownHumans = new System.Windows.Forms.NumericUpDown();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.numericUpDownParallelHorizontal = new System.Windows.Forms.NumericUpDown();
-            this.label4 = new System.Windows.Forms.Label();
-            this.numericUpDownParallelVertical = new System.Windows.Forms.NumericUpDown();
+            this.groupBoxParameters = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.numericUpDownSimulationLength = new System.Windows.Forms.NumericUpDown();
-            this.label6 = new System.Windows.Forms.Label();
-            this.numericUpDownMultiplier = new System.Windows.Forms.NumericUpDown();
+            this.label4 = new System.Windows.Forms.Label();
+            this.numericUpDownParallelVertical = new System.Windows.Forms.NumericUpDown();
+            this.label3 = new System.Windows.Forms.Label();
+            this.numericUpDownParallelHorizontal = new System.Windows.Forms.NumericUpDown();
+            this.label2 = new System.Windows.Forms.Label();
+            this.numericUpDownHumans = new System.Windows.Forms.NumericUpDown();
             this.textBoxLogs = new System.Windows.Forms.TextBox();
             this.Logs = new System.Windows.Forms.GroupBox();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.buttonWithoutAny = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.comboBoxMultipliers = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.tabControl1.SuspendLayout();
+            this.groupBoxActions.SuspendLayout();
+            this.tabControl.SuspendLayout();
+            this.tabPage4.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownHumans)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownParallelHorizontal)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownParallelVertical)).BeginInit();
+            this.groupBoxParameters.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSimulationLength)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMultiplier)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownParallelVertical)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownParallelHorizontal)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownHumans)).BeginInit();
             this.Logs.SuspendLayout();
-            this.tabPage4.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox
@@ -154,28 +153,48 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Stats";
             // 
-            // groupBox2
+            // groupBoxActions
             // 
-            this.groupBox2.Controls.Add(this.buttonManualEmergency);
-            this.groupBox2.Controls.Add(this.buttonStopSimulation);
-            this.groupBox2.Location = new System.Drawing.Point(783, 389);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(214, 84);
-            this.groupBox2.TabIndex = 8;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Actions";
+            this.groupBoxActions.Controls.Add(this.buttonManualEmergency);
+            this.groupBoxActions.Controls.Add(this.buttonStopSimulation);
+            this.groupBoxActions.Location = new System.Drawing.Point(783, 389);
+            this.groupBoxActions.Name = "groupBoxActions";
+            this.groupBoxActions.Size = new System.Drawing.Size(214, 84);
+            this.groupBoxActions.TabIndex = 8;
+            this.groupBoxActions.TabStop = false;
+            this.groupBoxActions.Text = "Actions";
             // 
-            // tabControl1
+            // tabControl
             // 
-            this.tabControl1.Controls.Add(this.tabPage4);
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Location = new System.Drawing.Point(779, 119);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(218, 65);
-            this.tabControl1.TabIndex = 10;
+            this.tabControl.Controls.Add(this.tabPage4);
+            this.tabControl.Controls.Add(this.tabPage1);
+            this.tabControl.Controls.Add(this.tabPage2);
+            this.tabControl.Controls.Add(this.tabPage3);
+            this.tabControl.Location = new System.Drawing.Point(779, 119);
+            this.tabControl.Name = "tabControl";
+            this.tabControl.SelectedIndex = 0;
+            this.tabControl.Size = new System.Drawing.Size(218, 65);
+            this.tabControl.TabIndex = 10;
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.buttonWithoutAny);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(210, 39);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Simple";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // buttonWithoutAny
+            // 
+            this.buttonWithoutAny.Location = new System.Drawing.Point(3, 6);
+            this.buttonWithoutAny.Name = "buttonWithoutAny";
+            this.buttonWithoutAny.Size = new System.Drawing.Size(201, 23);
+            this.buttonWithoutAny.TabIndex = 0;
+            this.buttonWithoutAny.Text = "Without any Parallelization";
+            this.buttonWithoutAny.UseVisualStyleBackColor = true;
+            this.buttonWithoutAny.Click += new System.EventHandler(this.buttonWithoutAny_Click);
             // 
             // tabPage1
             // 
@@ -209,103 +228,44 @@
             this.tabPage3.Text = "ThreadPool";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // groupBox3
+            // groupBoxParameters
             // 
-            this.groupBox3.Controls.Add(this.button1);
-            this.groupBox3.Controls.Add(this.label6);
-            this.groupBox3.Controls.Add(this.numericUpDownMultiplier);
-            this.groupBox3.Controls.Add(this.label5);
-            this.groupBox3.Controls.Add(this.numericUpDownSimulationLength);
-            this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Controls.Add(this.numericUpDownParallelVertical);
-            this.groupBox3.Controls.Add(this.label3);
-            this.groupBox3.Controls.Add(this.numericUpDownParallelHorizontal);
-            this.groupBox3.Controls.Add(this.label2);
-            this.groupBox3.Controls.Add(this.numericUpDownHumans);
-            this.groupBox3.Location = new System.Drawing.Point(783, 190);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(214, 193);
-            this.groupBox3.TabIndex = 11;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Parameters";
+            this.groupBoxParameters.Controls.Add(this.comboBoxMultipliers);
+            this.groupBoxParameters.Controls.Add(this.button1);
+            this.groupBoxParameters.Controls.Add(this.label6);
+            this.groupBoxParameters.Controls.Add(this.label5);
+            this.groupBoxParameters.Controls.Add(this.numericUpDownSimulationLength);
+            this.groupBoxParameters.Controls.Add(this.label4);
+            this.groupBoxParameters.Controls.Add(this.numericUpDownParallelVertical);
+            this.groupBoxParameters.Controls.Add(this.label3);
+            this.groupBoxParameters.Controls.Add(this.numericUpDownParallelHorizontal);
+            this.groupBoxParameters.Controls.Add(this.label2);
+            this.groupBoxParameters.Controls.Add(this.numericUpDownHumans);
+            this.groupBoxParameters.Location = new System.Drawing.Point(783, 190);
+            this.groupBoxParameters.Name = "groupBoxParameters";
+            this.groupBoxParameters.Size = new System.Drawing.Size(214, 193);
+            this.groupBoxParameters.TabIndex = 11;
+            this.groupBoxParameters.TabStop = false;
+            this.groupBoxParameters.Text = "Parameters";
             // 
-            // numericUpDownHumans
+            // button1
             // 
-            this.numericUpDownHumans.Location = new System.Drawing.Point(157, 19);
-            this.numericUpDownHumans.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDownHumans.Name = "numericUpDownHumans";
-            this.numericUpDownHumans.Size = new System.Drawing.Size(47, 20);
-            this.numericUpDownHumans.TabIndex = 0;
-            this.numericUpDownHumans.Value = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
+            this.button1.Location = new System.Drawing.Point(6, 148);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(198, 39);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "Full Benchmark";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.btnFullBenchmark_Click);
             // 
-            // label2
+            // label6
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 21);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(96, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Number of humans";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 72);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(127, 13);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Parallelization (Horizontal)";
-            // 
-            // numericUpDownParallelHorizontal
-            // 
-            this.numericUpDownParallelHorizontal.Location = new System.Drawing.Point(157, 70);
-            this.numericUpDownParallelHorizontal.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDownParallelHorizontal.Name = "numericUpDownParallelHorizontal";
-            this.numericUpDownParallelHorizontal.Size = new System.Drawing.Size(47, 20);
-            this.numericUpDownParallelHorizontal.TabIndex = 2;
-            this.numericUpDownParallelHorizontal.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 98);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(115, 13);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "Parallelization (Vertical)";
-            // 
-            // numericUpDownParallelVertical
-            // 
-            this.numericUpDownParallelVertical.Location = new System.Drawing.Point(157, 96);
-            this.numericUpDownParallelVertical.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDownParallelVertical.Name = "numericUpDownParallelVertical";
-            this.numericUpDownParallelVertical.Size = new System.Drawing.Size(47, 20);
-            this.numericUpDownParallelVertical.TabIndex = 4;
-            this.numericUpDownParallelVertical.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 124);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(140, 13);
+            this.label6.TabIndex = 9;
+            this.label6.Text = "Number of Blocks (multiplier)";
             // 
             // label5
             // 
@@ -338,28 +298,80 @@
             0,
             0});
             // 
-            // label6
+            // label4
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 124);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(140, 13);
-            this.label6.TabIndex = 9;
-            this.label6.Text = "Number of Blocks (multiplier)";
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 98);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(115, 13);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "Parallelization (Vertical)";
             // 
-            // numericUpDownMultiplier
+            // numericUpDownParallelVertical
             // 
-            this.numericUpDownMultiplier.Location = new System.Drawing.Point(157, 122);
-            this.numericUpDownMultiplier.Minimum = new decimal(new int[] {
+            this.numericUpDownParallelVertical.Location = new System.Drawing.Point(157, 96);
+            this.numericUpDownParallelVertical.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numericUpDownMultiplier.Name = "numericUpDownMultiplier";
-            this.numericUpDownMultiplier.Size = new System.Drawing.Size(47, 20);
-            this.numericUpDownMultiplier.TabIndex = 8;
-            this.numericUpDownMultiplier.Value = new decimal(new int[] {
-            10,
+            this.numericUpDownParallelVertical.Name = "numericUpDownParallelVertical";
+            this.numericUpDownParallelVertical.Size = new System.Drawing.Size(47, 20);
+            this.numericUpDownParallelVertical.TabIndex = 4;
+            this.numericUpDownParallelVertical.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 72);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(127, 13);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Parallelization (Horizontal)";
+            // 
+            // numericUpDownParallelHorizontal
+            // 
+            this.numericUpDownParallelHorizontal.Location = new System.Drawing.Point(157, 70);
+            this.numericUpDownParallelHorizontal.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownParallelHorizontal.Name = "numericUpDownParallelHorizontal";
+            this.numericUpDownParallelHorizontal.Size = new System.Drawing.Size(47, 20);
+            this.numericUpDownParallelHorizontal.TabIndex = 2;
+            this.numericUpDownParallelHorizontal.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 21);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(96, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Number of humans";
+            // 
+            // numericUpDownHumans
+            // 
+            this.numericUpDownHumans.Location = new System.Drawing.Point(157, 19);
+            this.numericUpDownHumans.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownHumans.Name = "numericUpDownHumans";
+            this.numericUpDownHumans.Size = new System.Drawing.Size(47, 20);
+            this.numericUpDownHumans.TabIndex = 0;
+            this.numericUpDownHumans.Value = new decimal(new int[] {
+            5,
             0,
             0,
             0});
@@ -384,35 +396,21 @@
             this.Logs.TabStop = false;
             this.Logs.Text = "Logs";
             // 
-            // tabPage4
+            // comboBoxMultipliers
             // 
-            this.tabPage4.Controls.Add(this.buttonWithoutAny);
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(210, 39);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "Simple";
-            this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // buttonWithoutAny
-            // 
-            this.buttonWithoutAny.Location = new System.Drawing.Point(3, 6);
-            this.buttonWithoutAny.Name = "buttonWithoutAny";
-            this.buttonWithoutAny.Size = new System.Drawing.Size(201, 23);
-            this.buttonWithoutAny.TabIndex = 0;
-            this.buttonWithoutAny.Text = "Without any Parallelization";
-            this.buttonWithoutAny.UseVisualStyleBackColor = true;
-            this.buttonWithoutAny.Click += new System.EventHandler(this.buttonWithoutAny_Click);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(6, 148);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(198, 39);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "Full Benchmark";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.btnFullBenchmark_Click);
+            this.comboBoxMultipliers.DisplayMember = "10";
+            this.comboBoxMultipliers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxMultipliers.FormattingEnabled = true;
+            this.comboBoxMultipliers.Items.AddRange(new object[] {
+            "1",
+            "5",
+            "10",
+            "25",
+            "50"});
+            this.comboBoxMultipliers.Location = new System.Drawing.Point(157, 121);
+            this.comboBoxMultipliers.Name = "comboBoxMultipliers";
+            this.comboBoxMultipliers.Size = new System.Drawing.Size(47, 21);
+            this.comboBoxMultipliers.TabIndex = 2;
             // 
             // MainForm
             // 
@@ -420,9 +418,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1009, 686);
             this.Controls.Add(this.Logs);
-            this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.tabControl1);
-            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBoxParameters);
+            this.Controls.Add(this.tabControl);
+            this.Controls.Add(this.groupBoxActions);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.pictureBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -436,21 +434,20 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.tabControl1.ResumeLayout(false);
+            this.groupBoxActions.ResumeLayout(false);
+            this.tabControl.ResumeLayout(false);
+            this.tabPage4.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownHumans)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownParallelHorizontal)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownParallelVertical)).EndInit();
+            this.groupBoxParameters.ResumeLayout(false);
+            this.groupBoxParameters.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSimulationLength)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMultiplier)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownParallelVertical)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownParallelHorizontal)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownHumans)).EndInit();
             this.Logs.ResumeLayout(false);
             this.Logs.PerformLayout();
-            this.tabPage4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -465,12 +462,12 @@
         private System.Windows.Forms.Button buttonSimulateWithThreadPool;
         private System.Windows.Forms.Button buttonManualEmergency;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.GroupBox groupBoxActions;
+        private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox groupBoxParameters;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.NumericUpDown numericUpDownSimulationLength;
         private System.Windows.Forms.Label label4;
@@ -480,12 +477,12 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.NumericUpDown numericUpDownHumans;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.NumericUpDown numericUpDownMultiplier;
         private System.Windows.Forms.TextBox textBoxLogs;
         private System.Windows.Forms.GroupBox Logs;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.Button buttonWithoutAny;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ComboBox comboBoxMultipliers;
     }
 }
 

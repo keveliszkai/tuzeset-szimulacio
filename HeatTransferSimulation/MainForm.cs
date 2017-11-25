@@ -46,7 +46,9 @@ namespace HeatTransferSimulation
                           ControlStyles.SupportsTransparentBackColor
                           , true);
 
-            CreateLog("Program started.");
+            comboBoxMultipliers.SelectedIndex = 1;
+
+            CreateLogInvoke("Program started.");
         }
 
         private void ResetControllers()
@@ -60,7 +62,7 @@ namespace HeatTransferSimulation
         private void BootControllers()
         {
             FloorPlanController.Boot();
-            HeatTransferController.Boot(FloorPlanController.Walls, (int)numericUpDownMultiplier.Value);
+            HeatTransferController.Boot(FloorPlanController.Walls, Int32.Parse(comboBoxMultipliers.SelectedItem.ToString()));
             HumanController.Boot(FloorPlanController.Walls, FloorPlanController.Doors, (int)numericUpDownHumans.Value);
             HumanController.Humans.ForEach(i => i.SetEmergencyRoute(FloorPlanController.EmergencyRoute));
             SimulationLength = (int)numericUpDownSimulationLength.Value;
@@ -73,7 +75,7 @@ namespace HeatTransferSimulation
         private void SimulateWithoutAny()
         {
             Simulate = true;
-            CreateLog("Simple Simulation Starting");
+            CreateLogInvoke("Simple Simulation Starting");
 
             ResetControllers();
             BootControllers();
@@ -143,6 +145,7 @@ namespace HeatTransferSimulation
                             Simulate = false;
                             CreateLogInvoke("Simple Simulation Ended");
                             stopwatchFps.Stop();
+                            return;
                         }
                     }
                 }
@@ -153,7 +156,7 @@ namespace HeatTransferSimulation
         {
 
             Simulate = true;
-            CreateLog("Task Simulation Starting");
+            CreateLogInvoke("Task Simulation Starting");
 
             ResetControllers();
             BootControllers();
@@ -223,6 +226,7 @@ namespace HeatTransferSimulation
                             Simulate = false;
                             CreateLogInvoke("Task Simulation Ended");
                             stopwatchFps.Stop();
+                            return;
                         }
                     }
                 }
@@ -232,7 +236,7 @@ namespace HeatTransferSimulation
         private void SimulateWithThread()
         {
             Simulate = true;
-            CreateLog("Thread Simulation Starting");
+            CreateLogInvoke("Thread Simulation Starting");
 
             ResetControllers();
             BootControllers();
@@ -302,6 +306,7 @@ namespace HeatTransferSimulation
                             Simulate = false;
                             CreateLogInvoke("Thread Simulation Ended");
                             stopwatchFps.Stop();
+                            return;
                         }
                     }
                 }
@@ -329,7 +334,7 @@ namespace HeatTransferSimulation
         private void SimulateWithThreadPool()
         {
             Simulate = true;
-            CreateLog("ThreadPool Simulation Starting");
+            CreateLogInvoke("ThreadPool Simulation Starting");
 
             ResetControllers();
             BootControllers();
@@ -368,13 +373,13 @@ namespace HeatTransferSimulation
                 );
 
                 // Heat Temperature Calculation
-                HeatTransferController.Calculate();
+                HeatTransferController.CalculateThread(ParallelVertical, ParallelHorizontal);
 
                 // Drawing section
                 stopwatchDrawTime.Restart();
                 HumanController.Draw(gfx);
                 FloorPlanController.Draw(gfx);
-                HeatTransferController.Draw(gfx);
+                HeatTransferController.DrawThread(buffer, gfx, ParallelVertical, ParallelHorizontal);
                 stopwatchDrawTime.Stop();
 
                 // Screen Change
@@ -402,6 +407,7 @@ namespace HeatTransferSimulation
                         Simulate = false;
                         CreateLogInvoke("Thread Simulation Ended");
                         stopwatchFps.Stop();
+                        return;
                     }
                 }
             }
@@ -409,25 +415,72 @@ namespace HeatTransferSimulation
 
         private void FullBenchmark()
         {
+            DialogResult dialogResult = MessageBox.Show(string.Format("This benchmark will take {0} seconds. Are You Sure?", (numericUpDownSimulationLength.Value * 4)), "Are You Sure", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                    this.tabControl.Enabled = false;
+                    this.groupBoxActions.Enabled = false;
+                    this.groupBoxParameters.Enabled = false;
 
-            // Get reference to the dialog type.
-            var dialogTypeName = "System.Windows.Forms.PropertyGridInternal.GridErrorDlg";
-            var dialogType = typeof(Form).Assembly.GetType(dialogTypeName);
+                Task.Run(() =>
+                {
 
-            // Create dialog instance.
-            var dialog = (Form)Activator.CreateInstance(dialogType, new PropertyGrid());
+                    List<float> Results = new List<float>();
 
-            // Populate relevant properties on the dialog instance.
-            dialog.Text = "Sample Title";
+                    SimulateWithoutAny();
+                    HeatTransferController.HeatBlocks[10, 10].FixedTemperature = true;
+                    HeatTransferController.HeatBlocks[10, 10].Temperature = 250;
+                    while (Simulate) { };
+                    Results.Add(FpsNumbers.Sum() / FpsNumbers.Count);
 
-            dialogType.GetProperty("Details").SetValue(dialog, "Text", null);
-            dialogType.GetProperty("Message").SetValue(dialog, "Sample Message", null);
 
-            // Display dialog.
-            var result = dialog.ShowDialog();
+                    SimulateWithThread();
+                    HeatTransferController.HeatBlocks[10, 10].FixedTemperature = true;
+                    HeatTransferController.HeatBlocks[10, 10].Temperature = 250;
+                    while (Simulate) { };
+                    Results.Add(FpsNumbers.Sum() / FpsNumbers.Count);
+
+
+                    SimulateWithTask();
+                    HeatTransferController.HeatBlocks[10, 10].FixedTemperature = true;
+                    HeatTransferController.HeatBlocks[10, 10].Temperature = 250;
+                    while (Simulate) { };
+                    Results.Add(FpsNumbers.Sum() / FpsNumbers.Count);
+
+                    SimulateWithThreadPool();
+                    HeatTransferController.HeatBlocks[10, 10].FixedTemperature = true;
+                    HeatTransferController.HeatBlocks[10, 10].Temperature = 250;
+                    while (Simulate) { };
+                    Results.Add(FpsNumbers.Sum() / FpsNumbers.Count);
+
+                    string text = string.Format("Restults:{0}{1}{0}", Environment.NewLine, "----------------");
+
+                    text += string.Format("Simple Average Fps: {0}{1}", Results[0], Environment.NewLine);
+                    text += string.Format("Thread Average Fps: {0}{1}", Results[1], Environment.NewLine);
+                    text += string.Format("Task Average Fps: {0}{1}", Results[2], Environment.NewLine);
+                    text += string.Format("ThreadPool Average Fps: {0}{1}", Results[3], Environment.NewLine);
+
+                    CreateLogInvoke(text);
+                }).ContinueWith(res => {
+                    MessageBox.Show("The results can be found in the log.", "Finished", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.EnableControls();
+                });
+            }
         }
 
         /** HANDLERS **/
+
+        private void EnableControls()
+        {
+            if (InvokeRequired)
+            {
+                this.Invoke(new Action(EnableControls));
+                return;
+            }
+            this.groupBoxParameters.Enabled = true;
+            this.groupBoxActions.Enabled = true;
+            this.tabControl.Enabled = true;
+        }
 
         private void CheckLogger()
         {
@@ -499,7 +552,7 @@ namespace HeatTransferSimulation
         private void buttonStopSimulation_Click(object sender, EventArgs e)
         {
             Simulate = false;
-            CreateLog("Thread Simulation Ended");
+            CreateLogInvoke("Thread Simulation Ended");
         }
 
         private void buttonSimulateTask_Click(object sender, EventArgs e)
@@ -519,7 +572,7 @@ namespace HeatTransferSimulation
 
         private void buttonManualEmergency_Click(object sender, EventArgs e)
         {
-            CreateLog("Manual Emergency Event");
+            CreateLogInvoke("Manual Emergency Event");
             this.HumanController.Humans.ForEach(h => h.PathFind());
         }
 
