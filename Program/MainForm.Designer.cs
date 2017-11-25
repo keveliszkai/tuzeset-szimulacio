@@ -45,6 +45,7 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.groupBoxParameters = new System.Windows.Forms.GroupBox();
+            this.comboBoxMultipliers = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -57,7 +58,6 @@
             this.numericUpDownHumans = new System.Windows.Forms.NumericUpDown();
             this.textBoxLogs = new System.Windows.Forms.TextBox();
             this.Logs = new System.Windows.Forms.GroupBox();
-            this.comboBoxMultipliers = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBoxActions.SuspendLayout();
@@ -248,6 +248,23 @@
             this.groupBoxParameters.TabStop = false;
             this.groupBoxParameters.Text = "Parameters";
             // 
+            // comboBoxMultipliers
+            // 
+            this.comboBoxMultipliers.DisplayMember = "10";
+            this.comboBoxMultipliers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxMultipliers.FormattingEnabled = true;
+            this.comboBoxMultipliers.Items.AddRange(new object[] {
+            "1",
+            "5",
+            "10",
+            "25",
+            "50"});
+            this.comboBoxMultipliers.Location = new System.Drawing.Point(157, 121);
+            this.comboBoxMultipliers.Name = "comboBoxMultipliers";
+            this.comboBoxMultipliers.Size = new System.Drawing.Size(47, 21);
+            this.comboBoxMultipliers.TabIndex = 2;
+            this.comboBoxMultipliers.SelectedValueChanged += new System.EventHandler(this.comboBoxMultipliers_SelectedValueChanged);
+            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(6, 148);
@@ -395,22 +412,6 @@
             this.Logs.TabIndex = 13;
             this.Logs.TabStop = false;
             this.Logs.Text = "Logs";
-            // 
-            // comboBoxMultipliers
-            // 
-            this.comboBoxMultipliers.DisplayMember = "10";
-            this.comboBoxMultipliers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxMultipliers.FormattingEnabled = true;
-            this.comboBoxMultipliers.Items.AddRange(new object[] {
-            "1",
-            "5",
-            "10",
-            "25",
-            "50"});
-            this.comboBoxMultipliers.Location = new System.Drawing.Point(157, 121);
-            this.comboBoxMultipliers.Name = "comboBoxMultipliers";
-            this.comboBoxMultipliers.Size = new System.Drawing.Size(47, 21);
-            this.comboBoxMultipliers.TabIndex = 2;
             // 
             // MainForm
             // 

@@ -26,6 +26,8 @@ namespace HeatTransferSimulation
         private int ParallelHorizontal = 1;
         private int ParallelVertical = 1;
 
+        private int Multiplier = 10;
+
         private FloorPlanController FloorPlanController = new FloorPlanController();
         private HeatTransferController HeatTransferController = new HeatTransferController();
         private HumanController HumanController = new HumanController();
@@ -46,7 +48,7 @@ namespace HeatTransferSimulation
                           ControlStyles.SupportsTransparentBackColor
                           , true);
 
-            comboBoxMultipliers.SelectedIndex = 1;
+            comboBoxMultipliers.SelectedIndex = 2;
 
             MessageBox.Show("Welcome! After starting the simulation, you can click on the screen, and the heat will come.", 
                 "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -65,7 +67,7 @@ namespace HeatTransferSimulation
         private void BootControllers()
         {
             FloorPlanController.Boot();
-            HeatTransferController.Boot(FloorPlanController.Walls, Int32.Parse(comboBoxMultipliers.SelectedItem.ToString()));
+            HeatTransferController.Boot(FloorPlanController.Walls, Multiplier);
             HumanController.Boot(FloorPlanController.Walls, FloorPlanController.Doors, (int)numericUpDownHumans.Value);
             HumanController.Humans.ForEach(i => i.SetEmergencyRoute(FloorPlanController.EmergencyRoute));
             SimulationLength = (int)numericUpDownSimulationLength.Value;
@@ -431,28 +433,28 @@ namespace HeatTransferSimulation
                     List<float> Results = new List<float>();
 
                     SimulateWithoutAny();
-                    HeatTransferController.HeatBlocks[10, 10].FixedTemperature = true;
-                    HeatTransferController.HeatBlocks[10, 10].Temperature = 250;
+                    HeatTransferController.HeatBlocks[10, 8].FixedTemperature = true;
+                    HeatTransferController.HeatBlocks[10, 8].Temperature = 250;
                     while (Simulate) { };
                     Results.Add(FpsNumbers.Sum() / FpsNumbers.Count);
 
 
                     SimulateWithThread();
-                    HeatTransferController.HeatBlocks[10, 10].FixedTemperature = true;
-                    HeatTransferController.HeatBlocks[10, 10].Temperature = 250;
+                    HeatTransferController.HeatBlocks[10, 8].FixedTemperature = true;
+                    HeatTransferController.HeatBlocks[10, 8].Temperature = 250;
                     while (Simulate) { };
                     Results.Add(FpsNumbers.Sum() / FpsNumbers.Count);
 
 
                     SimulateWithTask();
-                    HeatTransferController.HeatBlocks[10, 10].FixedTemperature = true;
-                    HeatTransferController.HeatBlocks[10, 10].Temperature = 250;
+                    HeatTransferController.HeatBlocks[10, 8].FixedTemperature = true;
+                    HeatTransferController.HeatBlocks[10, 8].Temperature = 250;
                     while (Simulate) { };
                     Results.Add(FpsNumbers.Sum() / FpsNumbers.Count);
 
                     SimulateWithThreadPool();
-                    HeatTransferController.HeatBlocks[10, 10].FixedTemperature = true;
-                    HeatTransferController.HeatBlocks[10, 10].Temperature = 250;
+                    HeatTransferController.HeatBlocks[10, 8].FixedTemperature = true;
+                    HeatTransferController.HeatBlocks[10, 8].Temperature = 250;
                     while (Simulate) { };
                     Results.Add(FpsNumbers.Sum() / FpsNumbers.Count);
 
@@ -599,6 +601,11 @@ namespace HeatTransferSimulation
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void comboBoxMultipliers_SelectedValueChanged(object sender, EventArgs e)
+        {
+            Multiplier = Int32.Parse(comboBoxMultipliers.SelectedItem.ToString());
         }
     }
 }
