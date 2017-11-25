@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace HeatTransferSimulation.Controllers
@@ -59,6 +60,27 @@ namespace HeatTransferSimulation.Controllers
             .Where(room => room.InRoom(human.Position))
             .FirstOrDefault()
             );
+
+            CalculationStopper.Stop();
+            CalculationTime = CalculationStopper.ElapsedTicks;
+        }
+
+        public void CalculateWithThread(List<Wall> walls, List<Door> doors, List<Room> rooms)
+        {
+            CalculationStopper.Restart();
+
+            List<Thread> threads = new List<Thread>();
+
+            Humans.ForEach(human => threads.Add(new Thread(() => human.Calculate(walls, doors))));
+            Humans.ForEach(human =>
+            human.Room = rooms
+            .Where(room => !room.isMainRoom)
+            .Where(room => room.InRoom(human.Position))
+            .FirstOrDefault()
+            );
+
+            threads.ForEach(t => t.Start());
+            threads.ForEach(t => t.Join());
 
             CalculationStopper.Stop();
             CalculationTime = CalculationStopper.ElapsedTicks;

@@ -70,6 +70,85 @@ namespace HeatTransferSimulation
 
         /** SIMULATIONS **/
 
+        private void SimulateWithoutAny()
+        {
+            Simulate = true;
+            CreateLog("Simple Simulation Starting");
+
+            ResetControllers();
+            BootControllers();
+
+            Task.Run(() => {
+
+                Fps = 0;
+                var screenWidth = pictureBox.Width;
+                var screenHeight = pictureBox.Height;
+
+                Stopwatch stopwatchFps = new Stopwatch();
+                Stopwatch stopwatchDrawTime = new Stopwatch();
+
+                stopwatchFps.Start();
+
+                WriteStats(0, 0);
+
+                while (Simulate)
+                {
+                    Bitmap buffer = new Bitmap(screenWidth, screenHeight);
+                    Graphics gfx = Graphics.FromImage(buffer);//set the graphics to draw on the image
+
+                    // Calculations
+                    HumanController.Calculate(
+                        FloorPlanController.Walls,
+                        FloorPlanController.Doors,
+                        FloorPlanController.Rooms
+                    );
+
+                    // Human --> HeatBlock
+                    HumanController.Humans.ForEach(h =>
+                        h.Temperature = HeatTransferController.GetNearestBlock(h.Position).Temperature
+                    );
+
+                    // Heat Temperature Calculation
+                    HeatTransferController.Calculate();
+
+                    // Drawing section
+                    stopwatchDrawTime.Restart();
+                    HumanController.Draw(gfx);
+                    FloorPlanController.Draw(gfx);
+                    HeatTransferController.Draw(gfx);
+                    stopwatchDrawTime.Stop();
+
+                    // Screen Change
+                    ChangeScreen(buffer);
+                    HumanController.RandomEvent();
+                    Fps++;
+
+                    // Check Logs
+                    CheckLogger();
+
+                    if (stopwatchFps.ElapsedMilliseconds > ONE_SEC)
+                    {
+                        FpsNumbers.Add(Fps);
+
+                        float fpsAverage = FpsNumbers.Sum() / FpsNumbers.Count;
+
+                        WriteStats(stopwatchDrawTime.ElapsedMilliseconds, fpsAverage);
+
+                        Fps = 0;
+
+                        stopwatchFps.Restart();
+
+                        if (FpsNumbers.Count > SimulationLength)
+                        {
+                            Simulate = false;
+                            CreateLogInvoke("Simple Simulation Ended");
+                            stopwatchFps.Stop();
+                        }
+                    }
+                }
+            });
+        }
+
         private void SimulateWithTask()
         {
 
@@ -249,36 +328,32 @@ namespace HeatTransferSimulation
 
         private void SimulateWithThreadPool()
         {
+            Simulate = true;
+            CreateLog("ThreadPool Simulation Starting");
+
             ResetControllers();
             BootControllers();
 
-            Simulate = true;
-
-            ThreadPool.QueueUserWorkItem(new WaitCallback(Body));
+            ThreadPool.QueueUserWorkItem(new WaitCallback(ThreadPoolBody));
         }
 
-        private void Body(Object threadContext)
+        private void ThreadPoolBody(Object threadContext)
         {
+            Fps = 0;
             var screenWidth = pictureBox.Width;
             var screenHeight = pictureBox.Height;
 
-            Random rnd = new Random();
-            int randomCounter = 0;
+            Stopwatch stopwatchFps = new Stopwatch();
+            Stopwatch stopwatchDrawTime = new Stopwatch();
 
-            Stopwatch sw = new Stopwatch();
-            sw.Start();
+            stopwatchFps.Start();
 
-            Stopwatch swFps = new Stopwatch();
-            swFps.Start();
-
-            int fpsTmp = 0;
-
-            ChangeText(string.Format("FPS: {0}\nCalculationTime: {1}", Fps, HeatTransferController.CalculationTime + HumanController.CalculationTime));
+            WriteStats(0, 0);
 
             while (Simulate)
             {
                 Bitmap buffer = new Bitmap(screenWidth, screenHeight);
-                System.Drawing.Graphics gfx = Graphics.FromImage(buffer);//set the graphics to draw on the image
+                Graphics gfx = Graphics.FromImage(buffer);//set the graphics to draw on the image
 
                 // Calculations
                 HumanController.Calculate(
@@ -287,48 +362,69 @@ namespace HeatTransferSimulation
                     FloorPlanController.Rooms
                 );
 
+                // Human --> HeatBlock
                 HumanController.Humans.ForEach(h =>
                     h.Temperature = HeatTransferController.GetNearestBlock(h.Position).Temperature
                 );
 
+                // Heat Temperature Calculation
                 HeatTransferController.Calculate();
 
-                // Draws
+                // Drawing section
+                stopwatchDrawTime.Restart();
                 HumanController.Draw(gfx);
                 FloorPlanController.Draw(gfx);
                 HeatTransferController.Draw(gfx);
+                stopwatchDrawTime.Stop();
 
-                if (sw.ElapsedMilliseconds > REFRESH_SCREEN_MS)
+                // Screen Change
+                ChangeScreen(buffer);
+                HumanController.RandomEvent();
+                Fps++;
+
+                // Check Logs
+                CheckLogger();
+
+                if (stopwatchFps.ElapsedMilliseconds > ONE_SEC)
                 {
-                    ChangeScreen(buffer);//set the PictureBox's image to be the buffer
+                    FpsNumbers.Add(Fps);
 
-                    if (randomCounter == 0)
+                    float fpsAverage = FpsNumbers.Sum() / FpsNumbers.Count;
+
+                    WriteStats(stopwatchDrawTime.ElapsedMilliseconds, fpsAverage);
+
+                    Fps = 0;
+
+                    stopwatchFps.Restart();
+
+                    if (FpsNumbers.Count > SimulationLength)
                     {
-                        randomCounter = rnd.Next(0, 30);
-                        HumanController.RandomEvent();
+                        Simulate = false;
+                        CreateLogInvoke("Thread Simulation Ended");
+                        stopwatchFps.Stop();
                     }
-                    else
-                    {
-                        randomCounter--;
-                    }
-
-                    sw.Restart();
-                }
-
-                fpsTmp++;
-
-                if (swFps.ElapsedMilliseconds > 1000)
-                {
-                    Fps = fpsTmp;
-                    ChangeText(string.Format(
-                        "FPS: {0}\n" +
-                        "CalculationTime (Heat): {1}\n" +
-                        "CalculationTime (Human): {2}\n", 
-                        Fps, HeatTransferController.CalculationTime, HumanController.CalculationTime));
-                    fpsTmp = 0;
-                    swFps.Restart();
                 }
             }
+        }
+
+        private void FullBenchmark()
+        {
+
+            // Get reference to the dialog type.
+            var dialogTypeName = "System.Windows.Forms.PropertyGridInternal.GridErrorDlg";
+            var dialogType = typeof(Form).Assembly.GetType(dialogTypeName);
+
+            // Create dialog instance.
+            var dialog = (Form)Activator.CreateInstance(dialogType, new PropertyGrid());
+
+            // Populate relevant properties on the dialog instance.
+            dialog.Text = "Sample Title";
+
+            dialogType.GetProperty("Details").SetValue(dialog, "Text", null);
+            dialogType.GetProperty("Message").SetValue(dialog, "Sample Message", null);
+
+            // Display dialog.
+            var result = dialog.ShowDialog();
         }
 
         /** HANDLERS **/
@@ -425,6 +521,16 @@ namespace HeatTransferSimulation
         {
             CreateLog("Manual Emergency Event");
             this.HumanController.Humans.ForEach(h => h.PathFind());
+        }
+
+        private void buttonWithoutAny_Click(object sender, EventArgs e)
+        {
+            SimulateWithoutAny();
+        }
+
+        private void btnFullBenchmark_Click(object sender, EventArgs e)
+        {
+            FullBenchmark();
         }
 
         /** OTHERS **/
