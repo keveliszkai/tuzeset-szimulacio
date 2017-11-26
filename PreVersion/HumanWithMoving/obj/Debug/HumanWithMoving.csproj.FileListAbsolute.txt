@@ -7,3 +7,12 @@ c:\Users\liszk\Documents\Visual Studio 2017\Projects\HumanWithMoving\HumanWithMo
 c:\Users\liszk\Documents\Visual Studio 2017\Projects\HumanWithMoving\HumanWithMoving\obj\Debug\HumanWithMoving.csproj.GenerateResource.Cache
 c:\Users\liszk\Documents\Visual Studio 2017\Projects\HumanWithMoving\HumanWithMoving\obj\Debug\HumanWithMoving.exe
 c:\Users\liszk\Documents\Visual Studio 2017\Projects\HumanWithMoving\HumanWithMoving\obj\Debug\HumanWithMoving.pdb
+C:\Users\liszk\tuzeset-szimulacio\PreVersion\HumanWithMoving\bin\Debug\HumanWithMoving.exe.config
+C:\Users\liszk\tuzeset-szimulacio\PreVersion\HumanWithMoving\bin\Debug\HumanWithMoving.exe
+C:\Users\liszk\tuzeset-szimulacio\PreVersion\HumanWithMoving\bin\Debug\HumanWithMoving.pdb
+C:\Users\liszk\tuzeset-szimulacio\PreVersion\HumanWithMoving\obj\Debug\HumanWithMoving.csprojResolveAssemblyReference.cache
+C:\Users\liszk\tuzeset-szimulacio\PreVersion\HumanWithMoving\obj\Debug\HumanWithMoving.Form1.resources
+C:\Users\liszk\tuzeset-szimulacio\PreVersion\HumanWithMoving\obj\Debug\HumanWithMoving.Properties.Resources.resources
+C:\Users\liszk\tuzeset-szimulacio\PreVersion\HumanWithMoving\obj\Debug\HumanWithMoving.csproj.GenerateResource.Cache
+C:\Users\liszk\tuzeset-szimulacio\PreVersion\HumanWithMoving\obj\Debug\HumanWithMoving.exe
+C:\Users\liszk\tuzeset-szimulacio\PreVersion\HumanWithMoving\obj\Debug\HumanWithMoving.pdb

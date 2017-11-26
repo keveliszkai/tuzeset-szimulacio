@@ -57,7 +57,7 @@ namespace HumanWithMoving
         public void Draw(Graphics g)
         {
             Position = NextPosition;
-            Graphic.Draw(g, NextPosition, Angle, false);
+            Graphic.Draw(g, NextPosition, Angle, true);
         }
     }
 }
